@@ -3,3 +3,6 @@ Click on number 1 button
 	Start Calculator
 	Click Button 1
 	Answer Should be 1
+
+*** Keyword ***
+Start Calculator
