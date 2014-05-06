@@ -1,3 +1,6 @@
+*** Settings ***
+Library  AutoItLibrary
+
 *** Test case ****
 Click on number 1 button
 	Start Calculator
@@ -6,4 +9,4 @@ Click on number 1 button
 
 *** Keyword ***
 Start Calculator
-	Run  calculator.exe
+	Run  calc.exe
