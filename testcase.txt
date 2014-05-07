@@ -10,6 +10,7 @@ Click on number 1 button
 *** Keyword ***
 Start Calculator
 	Run  calc.exe
+	Wait For Active Window  Calculator
 
 Click Button 1
 	Control Click  Calculator  ${EMPTY}  Button44
