@@ -1,19 +1,17 @@
 *** Settings ***
 Library  AutoItLibrary
+Test Setup  Start Calculator
+Test Teardown  Win Close  Calculator  ${EMPTY}
 
 *** Test case ****
 Click on number 1 button
-	Start Calculator
 	Click Button 1
 	Answer Should Be 1
-	Win Close  Calculator  ${EMPTY}
 
 Click on number 2 button
-	Start Calculator
 	Click Button 2
 	Answer Should Be 2
-	Win Close  Calculator  ${EMPTY}
-	
+
 *** Keyword ***
 Start Calculator
 	Run  calc.exe
