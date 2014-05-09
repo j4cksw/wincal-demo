@@ -5,8 +5,15 @@ Library  AutoItLibrary
 Click on number 1 button
 	Start Calculator
 	Click Button 1
-	Answer Should be 1
+	Answer Should Be 1
+	Win Close  Calculator  ${EMPTY}
 
+Click on number 2 button
+	Start Calculator
+	Click Button 2
+	Answer Should Be 2
+	Win Close  Calculator  ${EMPTY}
+	
 *** Keyword ***
 Start Calculator
 	Run  calc.exe
@@ -14,3 +21,14 @@ Start Calculator
 
 Click Button 1
 	Control Click  Calculator  ${EMPTY}  Button44
+
+Answer Should Be 1
+	${ANSWER_TEXT}=  Control Get Text  Calculator  ${EMPTY}  Edit1
+	Should Be Equal  1.  ${ANSWER_TEXT.strip()}
+
+Click Button 2
+	Control Click  Calculator  ${EMPTY}  Button49
+
+Answer Should Be 2
+	${ANSWER_TEXT}=  Control Get Text  Calculator  ${EMPTY}  Edit1
+	Should Be Equal  2.  ${ANSWER_TEXT.strip()}
