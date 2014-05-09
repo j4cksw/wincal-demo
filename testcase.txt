@@ -1,7 +1,7 @@
 *** Settings ***
 Library  AutoItLibrary
 Test Setup  Start Calculator
-Test Teardown  Win Close  Calculator  ${EMPTY}
+Test Teardown  Stop Calculator
 
 *** Test case ****
 Click on number 1 button
@@ -16,6 +16,9 @@ Click on number 2 button
 Start Calculator
 	Run  calc.exe
 	Wait For Active Window  Calculator
+
+Stop Calculator
+	Win Close  Calculator  ${EMPTY}
 
 Click Button 1
 	Control Click  Calculator  ${EMPTY}  Button44
