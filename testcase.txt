@@ -4,13 +4,20 @@ Test Setup  Start Calculator
 Test Teardown  Stop Calculator
 
 *** Test case ****
-Click on number 1 button
-	Click Button 1
-	Answer Should Be 1
-
-Click on number 2 button
-	Click Button 2
-	Answer Should Be 2
+Rule For Each Number Button
+	[Template]  Click On Number Should Show Correct Number
+	#--------------------#
+    # NUMBER | BUTTON_ID #
+    #--------------------#
+    	1	Button44
+    	2	Button49
+    	3	Button54
+        4	Button43
+        5	Button48
+        6	Button53
+        7	Button42
+        8	Button47
+        9	Button52
 
 *** Keyword ***
 Start Calculator
@@ -20,16 +27,20 @@ Start Calculator
 Stop Calculator
 	Win Close  Calculator  ${EMPTY}
 
-Click Button 1
-	Control Click  Calculator  ${EMPTY}  Button44
+Click On Number Should Show Correct Number
+	[Arguments]  ${NUMBER}  ${BUTTON_ID}
+	Clear Answer
+	Click Button  ${BUTTON_ID}
+	Answer Should Be  ${NUMBER}
 
-Answer Should Be 1
+Clear Answer
+	Click Button  Button73
+	
+Click Button
+	[Arguments]  ${BUTTON_ID}
+	Control Click  Calculator  ${EMPTY}  ${BUTTON_ID}
+
+Answer Should Be
+	[Arguments]  ${EXPECTED_ANSWER}
 	${ANSWER_TEXT}=  Control Get Text  Calculator  ${EMPTY}  Edit1
-	Should Be Equal  1.  ${ANSWER_TEXT.strip()}
-
-Click Button 2
-	Control Click  Calculator  ${EMPTY}  Button49
-
-Answer Should Be 2
-	${ANSWER_TEXT}=  Control Get Text  Calculator  ${EMPTY}  Edit1
-	Should Be Equal  2.  ${ANSWER_TEXT.strip()}
+	Should Be Equal  ${EXPECTED_ANSWER}.  ${ANSWER_TEXT.strip()}
